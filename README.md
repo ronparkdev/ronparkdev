@@ -18,10 +18,10 @@
 #### Previous work (iOS)
 * Proficient : Objective-C, Swift, Realm, Alamofire
 
-#### Timeline :
+### Timeline :
 * (2020.03 ~ ) Naver FullStack Developer (React.js and Node.js based)
 * (2016.12 ~ 2020.03) Naver Webtoon iOS Developer
 * (2010.03 ~ 2017.02) Graduated from Hongik University in Computer Engineering
 
-#### Experience : 
+### Experience : 
 WIP
