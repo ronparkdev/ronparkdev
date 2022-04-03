@@ -1,16 +1,27 @@
-### Hi there 👋
+### Hi there 👋, I am ron park
 
-<!--
-**r0npark/r0npark** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fr0npark%2Fr0npark&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
-Here are some ideas to get you started:
+### Ron Park
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+Sangmin Park
+ronpark.dev@gmail.com
+[Github](https://github.com/r0npark) | [LinkedIn](https://www.linkedin.com/in/sang-min-park/) | [Velog](https://velog.io/@ron)
+
+### Technologies :
+
+#### Current work (FE)
+Proficient : JavaScript, TypeScript, HTML, CSS, React, Redux, Git, GraphQL, Apollo Client & Server, ESLint (with custom rule)
+Availability : Github Action, Jest, Jenkins
+
+#### Previous work (iOS)
+Proficient : Objective-C, Swift, Realm, Alamofire
+
+
+#### Timeline :
+* (2020.03 ~ ) Naver FullStack Developer (React.js and Node.js based)
+* (2016.12 ~ 2020.03) Naver Webtoon iOS Developer
+* (2010.03 ~ 2017.02) Graduated from Hongik University in Computer Engineering
+
+#### Experience : 
+WIP
