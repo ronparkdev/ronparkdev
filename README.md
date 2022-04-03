@@ -4,19 +4,19 @@
 
 ### Ron Park
 
-Sangmin Park
-ronpark.dev@gmail.com
+* Sangmin Park
+* ronpark.dev@gmail.com
+
 [Github](https://github.com/r0npark) | [LinkedIn](https://www.linkedin.com/in/sang-min-park/) | [Velog](https://velog.io/@ron)
 
 ### Technologies :
 
 #### Current work (FE)
-Proficient : JavaScript, TypeScript, HTML, CSS, React, Redux, Git, GraphQL, Apollo Client & Server, ESLint (with custom rule)
-Availability : Github Action, Jest, Jenkins
+* Proficient : JavaScript, TypeScript, HTML, CSS, React, Redux, Git, GraphQL, Apollo Client & Server, ESLint (with custom rule)
+* Availability : Github Action, Jest, Jenkins
 
 #### Previous work (iOS)
-Proficient : Objective-C, Swift, Realm, Alamofire
-
+* Proficient : Objective-C, Swift, Realm, Alamofire
 
 #### Timeline :
 * (2020.03 ~ ) Naver FullStack Developer (React.js and Node.js based)
