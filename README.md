@@ -7,7 +7,7 @@
 * Sangmin Park
 * ronpark.dev@gmail.com
 
-[Github](https://github.com/r0npark) | [LinkedIn](https://www.linkedin.com/in/sang-min-park/) | [Velog](https://velog.io/@ron)
+[LinkedIn](https://www.linkedin.com/in/sang-min-park/) | [Velog](https://velog.io/@ron)
 
 ### Technologies :
 
