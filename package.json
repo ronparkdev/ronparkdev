@@ -1,0 +1,12 @@
+{
+  "name": "ronparkdev",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "showdown": "^2.1.0"
+  }
+}
