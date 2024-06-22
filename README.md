@@ -8,80 +8,30 @@ I started my journey back in 2012, when Android was all the rage, as an app deve
 
 ---
 
----
+## 🌟 Professional Experience
 
-## 🌟 Frontend Developer
+### Full-Stack Developer  
+**Naver Corp, Korea**
 
-### Projects & Achievements
+- Led development of responsive user interfaces using TypeScript, React.js, and Next.js.
+- Developed robust SSR architecture on Kubernetes.
+- Implemented a Kubernetes-based BFF with GraphQL for seamless integration.
+- **Smartstore Commerce Platform**: Leading e-commerce platform in Korea.
 
-- **Naver Smart Store Service Development**
-- **Japan Smart Store Service Development & Launch**
-- **Innovative Service Development**
-  - Developed app-level user interactions without libraries
-  - Documented common components via Storybook
-- **Stable Service Development**
-  - Developed FE using TypeScript, Next.js, React.js
-  - Developed k8s-based FE SSR server
-  - Developed k8s-based BFF (GraphQL) server
-  - Experience with Sentry for error detection and management
-- **Developer Efficiency Improvement**
-  - Managed multiple services based on Monorepo
-  - Built CI/CD, labeling, and easy deployment systems using GitHub Action
-  - Developed ESLint plugin to automate repetitive conventions
 
-### Experience
+### iOS Application Developer  
+**Naver Webtoon Corp, Korea**
 
-- **Naver / Senior Frontend Developer (May 2020 - Present)**
-  - **FE Development**
-    - Monorepo structure
-    - TypeScript, React, Redux
-  - **BFF Development**
-    - Operated Node.js, Koa.js server for SSR and API processing
-    - Experience with k8s-based server zero-downtime deployment and scaling
-    - Experience handling peak traffic with Memcache, Redis
-  - **Japan MySmartstore Frontend Development**
-    - Monorepo structure
-    - TypeScript, Next.js, GraphQL, Apollo
-    - Responsive design
-    - Developed Apollo-based API server
-    - Improved TPS performance by 50% with Next.js based SSR server
-  - **Common**
-    - Implemented k8s-based Self-hosted runner environment using GitHub Actions
-    - Migrated all CI/CD from Jenkins
-    - Improved deployment efficiency by triggering deployments via issue comments or labeling
-    - Improved frontend development efficiency by developing ESLint plugins
+- Developed iOS applications focusing on user experience and offline usability.
+- Created tools for detecting illegal content distribution, leading to an internal patent application.
+- **Series iOS App**: Mobile app for web novels and comics.
 
 ---
 
-## 🍏 iOS Application Developer
+## Technical Skills
 
-### Projects & Achievements
-
-- **Naver Webtoon iOS App Development**
-- **Naver Series iOS App Development & Rebranding Launch (formerly Naver Books)**
-- **Developed Tools to Effectively Detect Users Illegally Leaking Content** (Filed internal patent)
-
-### Experience
-
-- **Naver Webtoon / iOS Application Developer (Dec 2016 - Apr 2020)**
-  - **iOS Application Development with Objective-C**
-  - Developed AR functionality to transform 2D images into 3D characters (Project: 마주쳤다)
-  - Developed tools to detect user IDs in illegally leaked content (Filed internal patent)
-- **Naver Series / iOS Application Development**
-  - Developed and launched iOS application with Swift
-  - Implemented offline mode and comic viewer using local database (Realm)
-  - Improved CI and deployment environment using Fastlane
-
----
-
-## 🌱 Personal Projects / Android App Development (Aug 2014 - Aug 2015)
-
-### ChocoPlayer Android App Development
-
-- Developed Android app simulator for PC games created with Enterbrain's Rpg Maker
-- Based on Cocos2D-X, Admob, C++, and Android NDK
-- 250K downloads on Play Store (currently removed)
-- Experience in reverse engineering file data structure
+- **Languages & Frameworks**: TypeScript, React.js, Next.js, JavaScript, HTML/CSS.
+- **Tools & Platforms**: Git, GitHub Actions, Kubernetes, automated testing frameworks.
 
 ---
 
