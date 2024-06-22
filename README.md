@@ -1,6 +1,6 @@
 # 👨‍💻 Sang Min Park
 
-### **I'm a creative but lazy developer**  
+### **I'm a creative, efficiency-driven developer**  
 I can't stand repetitive tasks, so I automate everything I can, leveraging AI to work smarter, not harder. When I see my colleagues wasting time, I find ingenious ways to solve their problems. While AI can help get code to simply work, I believe it's up to humans to refactor it to be efficient, secure, and readable. That's my specialty!
 
 ### **I don't limit myself**  
