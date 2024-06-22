@@ -1,3 +1,4 @@
+# .github/workflows/build.yml
 name: Build and Deploy
 
 on:
@@ -24,11 +25,14 @@ jobs:
       - name: Convert README.md to index.html
         run: npm run build
 
-      - name: Commit and push changes
+      - name: Prepare webbook branch
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git checkout -b webbook
+          git checkout --orphan webbook
+          git reset --hard
+          git clean -fd
+          mv index.html .
           git add index.html
           git commit -m 'Build: Convert README.md to index.html'
           git push --force --set-upstream origin webbook
