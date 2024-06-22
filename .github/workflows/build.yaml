@@ -30,9 +30,10 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git checkout --orphan webbook
+          mv index.html /tmp/index.html
           git reset --hard
           git clean -fd
-          mv index.html .
+          mv /tmp/index.html index.html
           git add index.html
           git commit -m 'Build: Convert README.md to index.html'
           git push --force --set-upstream origin webbook
