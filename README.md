@@ -1,9 +1,12 @@
 # 👨‍💻 Sang Min Park
 
-**Hello!**  
-I'm an experienced web developer with a strong background in both domestic and Japanese web services. I have extensive experience in frontend and BFF (Backend for Frontend) design for stable web services. I'm passionate about improving developer efficiency, striving to minimize unnecessary time spent by fellow developers.
+### **I'm a creative but lazy developer**  
+I can't stand repetitive tasks, so I automate everything I can, leveraging AI to work smarter, not harder. When I see my colleagues wasting time, I find ingenious ways to solve their problems. While AI can help get code to simply work, I believe it's up to humans to refactor it to be efficient, secure, and readable. That's my specialty!
 
-I aim to contribute to creating an enjoyable development environment for fellow developers, just like at LINE Plus.
+### **I don't limit myself**  
+I started my journey back in 2012, when Android was all the rage, as an app developer. The idea of being the first point of contact for users was incredibly appealing to me. After dabbling in iOS app development, I transitioned into a full-stack web developer. My interests don't stop there—I’m fascinated by quantum computing and diving into blockchain dApp development. I believe that for developers, stopping is the end—just like stagnant water breeds decay. That's why I'm a developer who refuses to be confined by limits.
+
+---
 
 ---
 
