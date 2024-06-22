@@ -46,11 +46,11 @@ I started my journey back in 2012, when Android was all the rage, as an app deve
 
 ## 📝 Publications
 
-- **Velog & Medium**
+### **Velog & Medium**
   - Why I transitioned from app developer to web developer
   - Applying Module alias and Autofixable Lint in React(CRA) + TypeScript
   - Is the latest tech stack always the best?
-- **Naver Engineering Day 2022 Presentation** (Oct 2022)
+### **Naver Engineering Day 2022 Presentation** (Oct 2022)
   - Improving FE development environment with Lint Rule development
   - Enhancing development environment with GitHub Actions
 
@@ -58,15 +58,17 @@ I started my journey back in 2012, when Android was all the rage, as an app deve
 
 ## 🧩 Toy Projects
 
-- **ChocoPlayer** (2015, [Video](http://youtube.com/watch?v=Yb3LpkhgnZs&feature=youtu.be), [GitHub](https://github.com/ronparkdev/chocoplayer))
+### **ChocoPlayer** (2015, [Video](http://youtube.com/watch?v=Yb3LpkhgnZs&feature=youtu.be), [GitHub](https://github.com/ronparkdev/chocoplayer))
   - Cocos2d-x based iOS/Android game emulator
   - Achieved 250K downloads, currently removed from Play Store
-- **Tiny Time Timer** (2022, [Whale Extension](https://store.whale.naver.com/mini/detail/ggjkckdfbpmdaclhpmjlpifjilpdlhpg), [GitHub](https://github.com/ronparkdev/time-timer))
+### **Tiny Time Timer** (2022, [Whale Extension](https://store.whale.naver.com/mini/detail/ggjkckdfbpmdaclhpmjlpifjilpdlhpg), [GitHub](https://github.com/ronparkdev/time-timer))
   - React.js based time timer web SPA
   - Developed with sound effects and dark theme, available as web/extension
-- **AR Book** (2024, [Video](https://youtu.be/jMTW3Zffxg0))
+### **AR Book** (2024, [Video](https://youtu.be/jMTW3Zffxg0))
   - Web game application based on Pixi.js
   - Implemented marker recognition using OpenCV.js
+### **Shortcut Click** (2015, [Video](https://youtu.be/BpF5vEGk598?si=uor5RJzOqwKQD_as), [GitHub](https://github.com/ronparkdev/shortcut-click-extension))
+  - Chrome extension to customize shortcuts for buttons on webpages
 
 ---
 
