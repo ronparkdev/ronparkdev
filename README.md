@@ -80,7 +80,7 @@ I started my journey back in 2012, when Android was all the rage, as an app deve
 
 ## 📞 Contact
 
-- **Phone:** +82 10-2808-6362
+- **Phone:** [+82 10-2808-6362](tel:821028086362)
 - **Email:** [ronpark.dev@gmail.com](mailto:ronpark.dev@gmail.com)
 - **LinkedIn:** [linkedin.com/in/sang-min-park](https://www.linkedin.com/in/sang-min-park)
 
