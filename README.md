@@ -67,7 +67,7 @@ I started my journey back in 2012, when Android was all the rage, as an app deve
 ### **AR Book** (2024, [Video](https://youtu.be/jMTW3Zffxg0))
   - Web game application based on Pixi.js
   - Implemented marker recognition using OpenCV.js
-### **Shortcut Click** (2015, [Video](https://youtu.be/BpF5vEGk598?si=uor5RJzOqwKQD_as), [GitHub](https://github.com/ronparkdev/shortcut-click-extension))
+### **Shortcut Click** (2025, [Video](https://youtu.be/BpF5vEGk598?si=uor5RJzOqwKQD_as), [GitHub](https://github.com/ronparkdev/shortcut-click-extension))
   - Chrome extension to customize shortcuts for buttons on webpages
 
 ---
