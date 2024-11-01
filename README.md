@@ -10,6 +10,10 @@ I started my journey back in 2012, when Android was all the rage, as an app deve
 
 ## 🌟 Professional Experience
 
+### Frontend Engineer
+**Naver Corp, Korea**
+- SW Engineer of Healthcare Lab 
+
 ### Full-Stack Developer  
 **Naver Corp, Korea**
 
@@ -17,7 +21,6 @@ I started my journey back in 2012, when Android was all the rage, as an app deve
 - Developed robust SSR architecture on Kubernetes.
 - Implemented a Kubernetes-based BFF with GraphQL for seamless integration.
 - **Smartstore Commerce Platform**: Leading e-commerce platform in Korea.
-
 
 ### iOS Application Developer  
 **Naver Webtoon Corp, Korea**
@@ -56,6 +59,18 @@ I started my journey back in 2012, when Android was all the rage, as an app deve
 
 ---
 
+## 🧩 Freelance Projects
+
+### **Cosmetics order platform** (https://bring-k.com/order)
+  - Cosmetics customized B2B order platform web development
+
+### **AR Book** (2024, [Video](https://youtu.be/jMTW3Zffxg0))
+  - Web game application based on Pixi.js
+  - Implemented marker recognition using OpenCV.js
+
+
+---
+
 ## 🧩 Toy Projects
 
 ### **ChocoPlayer** (2015, [Video](http://youtube.com/watch?v=Yb3LpkhgnZs&feature=youtu.be), [GitHub](https://github.com/ronparkdev/chocoplayer))
@@ -64,9 +79,6 @@ I started my journey back in 2012, when Android was all the rage, as an app deve
 ### **Tiny Time Timer** (2022, [Whale Extension](https://store.whale.naver.com/mini/detail/ggjkckdfbpmdaclhpmjlpifjilpdlhpg), [GitHub](https://github.com/ronparkdev/time-timer))
   - React.js based time timer web SPA
   - Developed with sound effects and dark theme, available as web/extension
-### **AR Book** (2024, [Video](https://youtu.be/jMTW3Zffxg0))
-  - Web game application based on Pixi.js
-  - Implemented marker recognition using OpenCV.js
 ### **Shortcut Click** (2025, [Video](https://youtu.be/BpF5vEGk598?si=uor5RJzOqwKQD_as), [GitHub](https://github.com/ronparkdev/shortcut-click-extension))
   - Chrome extension to customize shortcuts for buttons on webpages
 
