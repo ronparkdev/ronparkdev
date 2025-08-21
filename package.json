@@ -2,11 +2,15 @@
   "name": "ronparkdev",
   "version": "1.0.0",
   "scripts": {
-    "build": "node build.js"
+    "build": "node build.js",
+    "watch": "nodemon --watch README.md --watch template.html --watch build.js build.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "showdown": "^2.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }

@@ -1,17 +1,17 @@
-# 👨‍💻 Sang Min Park
+# <i data-lucide="user"></i> Sang Min Park
 
-### **Creative Full-Stack Engineer with a Foundation-First Approach**
+### **<i data-lucide="code"></i> Creative Full-Stack Engineer with a Foundation-First Approach**
 I thrive on creative challenges and exploring cutting-edge technologies, but I believe innovation requires rock-solid foundations. I build type-safe, scalable systems using code generators from OpenAPI specs and sometimes create unified FE/BE modules for seamless integration. My monorepo-first approach and full-stack expertise enable me to design BE interfaces optimized for FE needs while crafting FE experiences that maximize BE performance.
 
-### **Mobile-First, Platform-Agnostic Developer**
+### **<i data-lucide="smartphone"></i> Mobile-First, Platform-Agnostic Developer**
 With deep roots in iOS and Android development since 2012, I bring native mobile thinking to every project. I don't just make websites responsive—I create experiences that feel native on every device, understanding the unique constraints and opportunities of mobile platforms.
 
-### **Automation Evangelist & Efficiency Expert**
+### **<i data-lucide="bot"></i> Automation Evangelist & Efficiency Expert**
 I can't stand repetitive tasks and automate everything possible, leveraging AI to work smarter. When I see colleagues wasting time, I find ingenious solutions to their problems. While AI can make code work, I specialize in refactoring it to be efficient, secure, and maintainable—that's where human expertise shines.
 
 ---
 
-## 🌟 Professional Experience
+## <i data-lucide="briefcase"></i> Professional Experience
 
 ### Co-Founder & CTO
 **Symptily (Working Title)** | *AI-Powered Healthcare Platform* | *Present*
@@ -45,15 +45,15 @@ I can't stand repetitive tasks and automate everything possible, leveraging AI t
 
 ---
 
-## 💡 Technical Philosophy & Skills
+## <i data-lucide="wrench"></i> Technical Philosophy & Skills
 
-### **Architecture & Development Approach**
+### **<i data-lucide="building"></i> Architecture & Development Approach**
 - **Monorepo Advocate**: Streamline development with unified codebases for FE/BE collaboration
 - **Type Safety Champion**: Generate TypeScript clients from OpenAPI specs for bulletproof development
 - **Cross-Platform Excellence**: Native mobile experience (iOS/Android) applied to web development
 - **Full-Stack Synergy**: Design BE interfaces for optimal FE consumption while crafting FE that leverages BE strengths
 
-### **Technical Stack**
+### **<i data-lucide="zap"></i> Technical Stack**
 - **Frontend**: TypeScript, React.js, Next.js, React Native, Swift (iOS), Kotlin (Android)
 - **Backend**: Node.js, GraphQL, REST APIs, OpenAPI/Swagger
 - **DevOps & Tools**: Kubernetes, Docker, GitHub Actions, Monorepo tools (Nx, Turborepo)
@@ -61,7 +61,7 @@ I can't stand repetitive tasks and automate everything possible, leveraging AI t
 
 ---
 
-## 🌐 External Activities
+## <i data-lucide="target"></i> External Activities
 
 - **Code States Educational Content Creation: UI Library Development** (React Library Clone, Dec 2022)
 - **Couch Coding 6-Week Portfolio Completion Mentor** (Jul 2022 - Nov 2022)
@@ -70,23 +70,23 @@ I can't stand repetitive tasks and automate everything possible, leveraging AI t
 
 ---
 
-## 📝 Publications & Talks
+## <i data-lucide="file-text"></i> Publications & Talks
 
-### **Technical Writing**
+### **<i data-lucide="pen-tool"></i> Technical Writing**
 - Why I transitioned from app developer to web developer
 - Applying Module alias and Autofixable Lint in React(CRA) + TypeScript
 - Is the latest tech stack always the best?
 - Building Type-Safe Full-Stack Applications with Code Generation
 
-### **Naver Engineering Day 2022** (Oct 2022)
+### **<i data-lucide="mic"></i> Naver Engineering Day 2022** (Oct 2022)
 - Improving FE development environment with Lint Rule development
 - Enhancing development environment with GitHub Actions
 
 ---
 
-## 🚀 Notable Projects
+## <i data-lucide="rocket"></i> Notable Projects
 
-### **Freelance & Contract Work**
+### **<i data-lucide="briefcase"></i> Freelance & Contract Work**
 
 #### **B2B Cosmetics Order Platform** (https://bring-k.com/order)
 - Designed and implemented full-stack solution with unified type system
@@ -98,7 +98,7 @@ I can't stand repetitive tasks and automate everything possible, leveraging AI t
 - Implemented marker recognition with OpenCV.js
 - Optimized for mobile devices with touch-first interactions
 
-### **Personal Projects**
+### **<i data-lucide="tool"></i> Personal Projects**
 
 #### **ChocoPlayer - Game Emulator** (2015, [Video](https://youtu.be/8kt2GUJAd4A?si=I8fCjTyS13BlBvzC), [GitHub](https://github.com/ronparkdev/chocoplayer))
 - Cross-platform iOS/Android game emulator using Cocos2d-x
@@ -116,20 +116,20 @@ I can't stand repetitive tasks and automate everything possible, leveraging AI t
 
 ---
 
-## 🎓 Education
+## <i data-lucide="graduation-cap"></i> Education
 
 - **Hongik University Seoul Campus**  
   Bachelor's in Computer Engineering (Mar 2010 - Feb 2017)
 
 ---
 
-## 🌍 Looking Forward
+## <i data-lucide="telescope"></i> Looking Forward
 
-I'm passionate about bridging the gap between frontend and backend, mobile and web, creativity and stability. I believe the future of development lies in unified, type-safe systems that deliver exceptional experiences across all platforms. Whether it's exploring quantum computing, diving into blockchain dApps, or optimizing the next generation of web applications, I'm ready for the challenge.
+I'm passionate about bridging the gap between frontend and backend, mobile and web, creativity and stability. I believe the future of development lies in unified, type-safe systems that deliver exceptional experiences across all platforms. I want to create services that can positively impact people's lives, with my current biggest interests being AI and healthcare. Whether it's building innovative healthcare solutions or optimizing the next generation of web applications, I'm ready for the challenge.
 
 ---
 
-## 📞 Contact
+## <i data-lucide="phone"></i> Contact
 
 - **Email:** [ronpark.dev@gmail.com](mailto:ronpark.dev@gmail.com)
 - **LinkedIn:** [linkedin.com/in/sang-min-park](https://www.linkedin.com/in/sang-min-park)
