@@ -1,301 +1,702 @@
-const fs = require('fs')
-const path = require('path')
-const showdown = require('showdown')
+const fs = require('fs');
+const showdown = require('showdown');
+const converter = new showdown.Converter();
+const readme = fs.readFileSync('README.md', 'utf8');
+const html = converter.makeHtml(readme);
 
-/* --- Site Config (edit me) ------------------------------------ */
-const SITE = {
-  title: 'Want to know Ron?',
-  name: 'Ron', // shown in header + footer
-  subtitle: 'Builder • AI • Product',
-  email: 'hello@example.com',
-  github: 'https://github.com/your-handle',
-  linkedin: 'https://www.linkedin.com/in/your-handle/',
-}
-
-/* --- Markdown → HTML ------------------------------------------ */
-const mdPath = path.resolve(process.cwd(), 'README.md')
-const md = fs.readFileSync(mdPath, 'utf8')
-
-const converter = new showdown.Converter({
-  tables: true,
-  strikethrough: true,
-  tasklists: true,
-  emoji: true,
-  simplifiedAutoLink: true,
-  openLinksInNewWindow: true,
-  ghCompatibleHeaderId: true,
-  underline: true,
-  ghMentions: true,
-  metadata: true,
-})
-
-let contentHTML = converter.makeHtml(md)
-
-/* Ensure headings have IDs (slugify) for TOC + deep links */
-const slugify = s => s
-  .toString()
-  .trim()
-  .toLowerCase()
-  .replace(/[^\w\s-]/g, '')
-  .replace(/\s+/g, '-')
-  .replace(/-+/g, '-')
-
-contentHTML = contentHTML.replace(/<h([1-6])( [^>]*)?>(.*?)<\/h\1>/g, (m, level, attrs = '', inner) => {
-  // strip tags inside heading text for slug
-  const text = inner.replace(/<[^>]+>/g, '')
-  const id = slugify(text)
-  const safeAttrs = attrs.includes('id=') ? attrs : `${attrs || ''} id="${id}"`
-  return `<h${level}${safeAttrs}>${inner}</h${level}>`
-})
-
-/* --- HTML Template -------------------------------------------- */
-const html = `
+const htmlTemplate = `
 <!DOCTYPE html>
-<html lang="en" data-theme="auto">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>${SITE.title}</title>
-  <meta name="color-scheme" content="light dark" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #0b1020;
-      --bg-2: #0f152b;
-      --text: #0f1222;
-      --muted: #6b7280;
-      --card: rgba(255,255,255,0.65);
-      --card-border: rgba(17, 24, 39, 0.08);
-      --ring: 48 96% 53%;
-      --radius: 16px;
-      --shadow: 0 10px 40px rgba(2, 6, 23, 0.12);
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0b1020;
-        --bg-2: #0f152b;
-        --text: #e5e7eb;
-        --muted: #9aa5b1;
-        --card: rgba(13,17,23,0.6);
-        --card-border: rgba(255,255,255,0.08);
-        --shadow: 0 10px 40px rgba(0,0,0,0.45);
-      }
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Want to know Ron? - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --dark-bg: #0a0e27;
+            --dark-card: #151932;
+            --light-bg: #f8fafc;
+            --light-card: #ffffff;
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --accent: #667eea;
+            --accent-hover: #764ba2;
+            --border-radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-    html, body { height: 100%; }
-    body {
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
-      background: radial-gradient(1200px 800px at 10% -10%, rgba(100,108,255,0.25), transparent 60%),
-                  radial-gradient(1000px 600px at 90% 10%, rgba(45,212,191,0.25), transparent 60%),
-                  linear-gradient(180deg, var(--bg), var(--bg-2));
-      color: var(--text);
-    }
-    a { text-decoration: none; }
-    a:hover { text-decoration: underline; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Shell */
-    .site-wrap { max-width: 1080px; margin: 48px auto; padding: 0 20px; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--light-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
 
-    /* Header/Hero */
-    .hero {
-      border: 1px solid var(--card-border);
-      background: var(--card);
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
-      padding: 28px 24px;
-    }
-    .avatar {
-      width: 72px; height: 72px; border-radius: 50%;
-      display: grid; place-items: center; font-weight: 800; font-size: 28px;
-      background: conic-gradient(from 180deg at 50% 50%, #60a5fa, #a78bfa, #34d399, #60a5fa);
-      color: white; box-shadow: inset 0 0 0 4px rgba(255,255,255,0.3);
-    }
+        body.dark-mode {
+            --light-bg: var(--dark-bg);
+            --light-card: var(--dark-card);
+            --text-primary: #e2e8f0;
+            --text-secondary: #a0aec0;
+            background: var(--dark-bg);
+        }
 
-    .chip { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; border:1px solid var(--card-border); background: rgba(255,255,255,0.6); font-weight:500 }
-    @media (prefers-color-scheme: dark){ .chip{ background: rgba(255,255,255,0.06);} }
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 20% 80%, var(--accent) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, var(--accent-hover) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, #f093fb 0%, transparent 50%);
+            animation: bgMove 20s ease infinite;
+        }
 
-    /* Layout with TOC */
-    .content-grid { display:grid; grid-template-columns: 280px 1fr; gap: 24px; margin-top: 24px; }
-    @media (max-width: 992px){ .content-grid { grid-template-columns: 1fr; } }
+        @keyframes bgMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-20px, -20px) rotate(120deg); }
+            66% { transform: translate(20px, -10px) rotate(240deg); }
+        }
 
-    .toc {
-      position: sticky; top: 24px; height: calc(100vh - 48px);
-      border: 1px solid var(--card-border); background: var(--card); backdrop-filter: blur(10px);
-      border-radius: var(--radius); padding: 16px; overflow:auto; box-shadow: var(--shadow);
-    }
-    .toc h6 { font-weight: 700; letter-spacing: .02em; opacity: .8; }
-    .toc a { color: inherit; opacity: .8 }
-    .toc a.active { opacity: 1; font-weight: 600 }
+        /* Navigation Header */
+        .nav-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
 
-    .md-card {
-      border: 1px solid var(--card-border);
-      background: var(--card);
-      backdrop-filter: blur(10px);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 28px; overflow: hidden;
-    }
+        body.dark-mode .nav-header {
+            background: rgba(21, 25, 50, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
 
-    /* Markdown typography */
-    .md h1, .md h2, .md h3, .md h4, .md h5, .md h6 { scroll-margin-top: 96px; }
-    .md h1 { font-size: 2rem; font-weight:800; margin-top: .5rem }
-    .md h2 { font-size: 1.5rem; font-weight:700; margin-top: 2rem }
-    .md h3 { font-size: 1.25rem; font-weight:600; margin-top: 1.5rem }
-    .md p  { line-height: 1.85; opacity: .95 }
-    .md img { max-width: 100%; border-radius: 12px; }
-    .md blockquote { border-left: 4px solid rgba(99,102,241,.5); margin: 1rem 0; padding: .75rem 1rem; background: rgba(99,102,241,.08); border-radius: 8px; }
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .md pre { position: relative; }
-    .copy-btn {
-      position: absolute; top: 10px; right: 10px; border: 1px solid var(--card-border);
-      background: rgba(255,255,255,0.75); padding: 6px 10px; border-radius: 8px; font-size: 12px;
-    }
-    @media (prefers-color-scheme: dark){ .copy-btn{ background: rgba(0,0,0,0.45); color: #e5e7eb } }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+        }
 
-    code { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace; font-size: .95em; }
+        @keyframes gradientShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(30deg); }
+        }
 
-    /* Footer */
-    footer { color: var(--muted); margin: 28px 0 48px; text-align: center; }
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
 
-    /* Top utilities */
-    .util-bar { display:flex; gap:12px; align-items:center; justify-content:flex-end }
-    .progress { height: 6px; background: rgba(255,255,255,.35); }
-    .progress-bar { background: linear-gradient(90deg, #60a5fa, #a78bfa, #34d399); }
+        .theme-toggle {
+            background: var(--primary-gradient);
+            border: none;
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
 
-    .theme-toggle { border: 1px solid var(--card-border); background: rgba(255,255,255,0.6); border-radius: 10px; padding: 8px 10px; }
-    @media (prefers-color-scheme: dark){ .theme-toggle{ background: rgba(255,255,255,0.08) } }
-  </style>
+        .theme-toggle:hover {
+            transform: translateY(-2px) rotate(180deg);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 100px auto 50px;
+            padding: 3rem;
+            background: var(--light-card);
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body.dark-mode .container {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary);
+            margin: 2rem 0 1rem;
+            font-weight: 700;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid;
+            border-image: var(--primary-gradient) 1;
+            margin-top: 3rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--accent);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin: 1.2rem 0;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            animation: fadeIn 0.8s ease 0.4s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Links */
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            position: relative;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        a:hover::after {
+            width: 100%;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            color: var(--text-secondary);
+            margin: 0.8rem 0;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '▸';
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: -1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Code Blocks */
+        pre {
+            background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            font-family: 'Fira Code', monospace;
+        }
+
+        pre::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            display: flex;
+            gap: 8px;
+        }
+
+        pre::after {
+            content: '• • •';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            color: #4a5568;
+            letter-spacing: 8px;
+        }
+
+        code {
+            background: rgba(102, 126, 234, 0.1);
+            color: var(--accent);
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        body.dark-mode td {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid;
+            border-image: var(--primary-gradient) 1;
+            padding: 1rem 1.5rem;
+            margin: 2rem 0;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        blockquote::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--accent);
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            opacity: 0.3;
+        }
+
+        /* Images */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+            background: var(--primary-gradient);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.2);
+        }
+
+        .social-links a::after {
+            display: none;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-gradient);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            z-index: 999;
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 80px 20px 40px;
+                padding: 2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .nav-header {
+                padding: 1rem;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--light-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 0.5s ease 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(102, 126, 234, 0.2);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-gradient);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-gradient);
+        }
+    </style>
 </head>
 <body>
-  <div class="site-wrap">
-    <div class="hero d-flex flex-wrap align-items-center justify-content-between gap-3">
-      <div class="d-flex align-items-center gap-3">
-        <div class="avatar">${SITE.name?.[0] || 'R'}</div>
-        <div>
-          <h1 class="h3 mb-1">${SITE.title}</h1>
-          <div class="text-body-secondary">${SITE.subtitle}</div>
-          <div class="mt-2 d-flex flex-wrap gap-2">
-            <a class="chip" href="${SITE.github}" target="_blank" rel="noopener"><i class="bi bi-github"></i> GitHub</a>
-            <a class="chip" href="${SITE.linkedin}" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i> LinkedIn</a>
-            <a class="chip" href="mailto:${SITE.email}"><i class="bi bi-envelope"></i> Email</a>
-          </div>
+    <!-- Loading Screen -->
+    <div class="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-content">
+            <div class="logo">Ron's Portfolio</div>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
         </div>
-      </div>
-      <div class="util-bar flex-grow-1">
-        <button id="themeToggle" class="theme-toggle"><i class="bi bi-brightness-high"></i> Theme</button>
-      </div>
-      <div class="w-100"></div>
-      <div class="w-100 progress rounded-pill" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100">
-        <div class="progress-bar" id="progressBar" style="width:0%"></div>
-      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        ${html}
     </div>
 
-    <div class="content-grid">
-      <nav class="toc" id="toc">
-        <h6 class="mb-2">On this page</h6>
-        <div id="tocItems" class="small"></div>
-      </nav>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 style="margin-bottom: 1rem;">Let's Connect!</h3>
+            <p style="margin-bottom: 1.5rem;">Feel free to reach out for collaborations or just a friendly hello 👋</p>
+            <div class="social-links">
+                <a href="https://github.com" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="mailto:email@example.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.9;">
+                &copy; ${new Date().getFullYear()} Sang Min Park. Crafted with <i class="fas fa-heart" style="color: #ff6b6b;"></i> and lots of <i class="fas fa-coffee" style="color: #8b4513;"></i>
+            </p>
+        </div>
+    </footer>
 
-      <main class="md-card">
-        <article id="content" class="md">
-          ${contentHTML}
-        </article>
-      </main>
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
     </div>
 
-    <footer class="mt-4">&copy; ${new Date().getFullYear()} ${SITE.name}. All rights reserved.</footer>
-  </div>
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script>
-    // Syntax highlight + copy buttons
-    document.querySelectorAll('pre code').forEach(block => {
-      try { hljs.highlightElement(block) } catch(e) {}
-      const btn = document.createElement('button')
-      btn.className = 'copy-btn'
-      btn.textContent = 'Copy'
-      btn.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(block.innerText)
-          btn.textContent = 'Copied!'
-          setTimeout(() => (btn.textContent = 'Copy'), 1200)
-        } catch(e) {}
-      })
-      block.parentElement.style.position = 'relative'
-      block.parentElement.appendChild(btn)
-    })
-
-    // Build TOC from h2/h3
-    const tocRoot = document.getElementById('tocItems')
-    const headings = Array.from(document.querySelectorAll('#content h2, #content h3'))
-    const ul = document.createElement('ul'); ul.className = 'list-unstyled'
-    headings.forEach(h => {
-      const li = document.createElement('li')
-      li.style.margin = h.tagName === 'H2' ? '8px 0' : '4px 0 4px 12px'
-      const a = document.createElement('a')
-      a.href = '#' + (h.id || h.textContent.trim().toLowerCase().replace(/[^\w\s-]/g,'').replace(/\s+/g,'-'))
-      a.textContent = h.textContent
-      a.addEventListener('click', () => setActive(a))
-      li.appendChild(a); ul.appendChild(li)
-    })
-    tocRoot.appendChild(ul)
-
-    const setActive = (el) => {
-      document.querySelectorAll('.toc a').forEach(a => a.classList.remove('active'))
-      el.classList.add('active')
-    }
-
-    // Scroll spy
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const link = document.querySelector('.toc a[href="#' + entry.target.id + '"]')
-          if (link) setActive(link)
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
         }
-      })
-    }, { rootMargin: '0px 0px -65% 0px', threshold: 0 })
-    headings.forEach(h => obs.observe(h))
 
-    // Reading progress
-    const bar = document.getElementById('progressBar')
-    const onScroll = () => {
-      const el = document.getElementById('content')
-      const rect = el.getBoundingClientRect()
-      const total = el.scrollHeight - window.innerHeight
-      const scrolled = Math.min(Math.max(window.scrollY - el.offsetTop + 20, 0), total)
-      const pct = total > 0 ? (scrolled / total) * 100 : 0
-      bar.style.width = pct.toFixed(1) + '%'
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
 
-    // Theme toggle (light/dark/auto)
-    const btn = document.getElementById('themeToggle')
-    const setTheme = t => { document.documentElement.setAttribute('data-theme', t); localStorage.setItem('theme', t); applyTheme(t) }
-    const applyTheme = t => {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-      document.documentElement.classList.toggle('dark', t === 'dark' || (t === 'auto' && prefersDark))
-      btn.innerHTML = t === 'dark' ? '<i class="bi bi-moon-stars"></i> Dark' : t === 'light' ? '<i class="bi bi-brightness-high"></i> Light' : '<i class="bi bi-circle-half"></i> Auto'
-    }
-    const current = localStorage.getItem('theme') || 'auto'
-    setTheme(current)
-    btn.addEventListener('click', () => {
-      const order = ['light','dark','auto']
-      const idx = order.indexOf(localStorage.getItem('theme') || 'auto')
-      setTheme(order[(idx + 1) % order.length])
-    })
+        // Scroll to Top
+        const scrollTop = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('active');
+            } else {
+                scrollTop.classList.remove('active');
+            }
+        });
 
-    // External links: noopener
-    document.querySelectorAll('a[target="_blank"]').forEach(a => a.rel = 'noopener')
-  </script>
+        scrollTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation to elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all main content elements
+        document.querySelectorAll('h2, h3, p, pre, blockquote, img, table').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect for background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const bgAnimation = document.querySelector('.bg-animation');
+            bgAnimation.style.transform = \`translateY(\${scrolled * 0.5}px)\`;
+        });
+
+        // Remove loading screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.loading').style.display = 'none';
+            }, 1500);
+        });
+    </script>
 </body>
-</html>
-`
+</html>`;
 
-fs.writeFileSync(path.resolve(process.cwd(), 'index.html'), html)
-console.log('✅ Generated index.html')
+fs.writeFileSync('index.html', htmlTemplate);
+console.log('✨ Portfolio site has been generated successfully!');
