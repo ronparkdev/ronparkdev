@@ -694,7 +694,6 @@
         const updateScrollTopPosition = () => {
             const bottom = Math.max(window.innerHeight - (body.scrollHeight - window.scrollY) + footerHeight - 50, 30);
             scrollTop.style.bottom = `${bottom}px`;
-            console.log({footerHeight, bottom});
         }
         
         new ResizeObserver(() => {
