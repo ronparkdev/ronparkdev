@@ -100,7 +100,7 @@ I can't stand repetitive tasks and automate everything possible, leveraging AI t
 
 ### **Personal Projects**
 
-#### **ChocoPlayer - Game Emulator** (2015, [Video](http://youtube.com/watch?v=Yb3LpkhgnZs&feature=youtu.be), [GitHub](https://github.com/ronparkdev/chocoplayer))
+#### **ChocoPlayer - Game Emulator** (2015, [Video](https://youtu.be/8kt2GUJAd4A?si=I8fCjTyS13BlBvzC), [GitHub](https://github.com/ronparkdev/chocoplayer))
 - Cross-platform iOS/Android game emulator using Cocos2d-x
 - Achieved 250K+ downloads before strategic removal
 - Demonstrated early expertise in mobile platform optimization
