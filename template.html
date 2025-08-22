@@ -180,7 +180,6 @@
             background-clip: text;
             text-align: center;
             margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease 0.2s both;
         }
 
         h2 {
@@ -354,7 +353,7 @@
             height: auto;
             border-radius: 12px;
             margin: 2rem 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.2));
             transition: var(--transition);
         }
 
@@ -458,6 +457,15 @@
             width: 0.8em;
             height: 0.8em;
             vertical-align: baseline;
+        }
+
+        /* Hide emojis inside i tags */
+        .container-content i {
+            font-style: normal;
+        }
+        
+        .container-content i::before {
+            content: '';
         }
 
         body.dark-mode .footer {
@@ -613,7 +621,7 @@
     <!-- Navigation Header -->
     <nav class="nav-header">
         <div class="nav-content">
-            <div class="logo">Ron Park</div>
+            <div class="logo">Foundation-First Innovator</div>
             <div class="nav-controls">
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
                     <i data-lucide="moon"></i>
@@ -735,25 +743,6 @@
                     });
                 }
             });
-        });
-
-        // Add animation to elements on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all main content elements
-        document.querySelectorAll('h2, h3, p, pre, blockquote, img, table').forEach(el => {
-            observer.observe(el);
         });
 
         // Parallax effect for background
