@@ -1,4 +1,9 @@
-# <i data-lucide="user"></i> Sang Min Park
+<div align="center">
+  <img width="256" alt="Image" src="https://github.com/user-attachments/assets/d172805d-5059-441c-99e6-6cd79ae5e088" />   
+</div>
+
+
+# <div align="center">Sang Min Park<div>
 
 ### **<i data-lucide="code"></i> Creative Full-Stack Engineer with a Foundation-First Approach**
 I thrive on creative challenges and exploring cutting-edge technologies, but I believe innovation requires rock-solid foundations. I build type-safe, scalable systems using code generators from OpenAPI specs and sometimes create unified FE/BE modules for seamless integration. My monorepo-first approach and full-stack expertise enable me to design BE interfaces optimized for FE needs while crafting FE experiences that maximize BE performance.
