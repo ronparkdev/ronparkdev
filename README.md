@@ -28,25 +28,31 @@ I can't stand repetitive tasks and automate everything possible, leveraging AI t
 - **Target Launch**: September 2025
 
 ### Frontend Engineer
-**Naver Corp, Korea**
+**Naver Corp, Korea** | *November 2024 - Present*
 - SW Engineer of Healthcare Lab
 - Implemented type-safe development workflows using OpenAPI specifications and code generation
 - Designed mobile-first responsive interfaces with deep understanding of iOS/Android UX patterns
 
 ### Full-Stack Developer  
-**Naver Corp, Korea**
+**Naver Corp, Korea** | *May 2020 - November 2024*
 - Led development of responsive user interfaces using TypeScript, React.js, and Next.js
 - Architected robust SSR applications on Kubernetes with optimized client-server communication
 - Implemented BFF layer with GraphQL, designing APIs that balance FE flexibility with BE performance
 - Built unified FE/BE modules ensuring type safety across the entire stack
+
+#### Key Projects
 - **Smartstore Commerce Platform**: Korea's leading e-commerce platform serving millions of users
+- **MySmartstore.jp**: Launched Japanese e-commerce platform in 2021 using GraphQL and Next.js architecture. Service was strategically discontinued in June 2024. ([Launch article](https://www.econotimes.com/Naver-aiming-to-bring-its-e-commerce-biz-to-Japan-1624047))
 
 ### iOS Application Developer  
-**Naver Webtoon Corp, Korea**
+**Naver Webtoon Corp, Korea** | *December 2016 - April 2020*
 - Developed native iOS applications with focus on offline-first architecture and superior UX
-- Created anti-piracy detection tools, resulting in internal patent application
+- Created anti-piracy detection tools, resulting in [internal patent application](https://patents.justia.com/patent/20210192671)
 - Applied mobile development best practices that continue to influence my cross-platform work
-- **Series iOS App**: Premium content platform for web novels and comics
+
+#### Key Projects
+- **Naver Webtoon iOS App**: Developed AR-based webtoon "마주쳤다" in 2017, implementing gyroscope and magnetometer-based technology to anchor images at specific spatial positions for immersive reading experience.
+- **Series iOS App**: Premium content platform for web novels and comics with advanced reading features and subscription management
 
 ---
 
@@ -68,24 +74,13 @@ I can't stand repetitive tasks and automate everything possible, leveraging AI t
 
 ## <span data-lucide="target">🎯</span> External Activities
 
-- **Code States Educational Content Creation: UI Library Development** (React Library Clone, Dec 2022)
-- **Couch Coding 6-Week Portfolio Completion Mentor** (Jul 2022 - Nov 2022)
-- **Naver Connect Foundation Bootcamp 7th Mentor** (Jul 2021 - Dec 2021)
-- **Programmers FE Dev Course 1st Participation** (Jun 2021 - Dec 2021)
-
----
-
-## <span data-lucide="file-text">📄</span> Publications & Talks
-
-### **<span data-lucide="pen-tool">✍️</span> Technical Writing**
-- Why I transitioned from app developer to web developer
-- Applying Module alias and Autofixable Lint in React(CRA) + TypeScript
-- Is the latest tech stack always the best?
-- Building Type-Safe Full-Stack Applications with Code Generation
-
-### **<span data-lucide="mic">🎤</span> Naver Engineering Day 2022** (Oct 2022)
-- Improving FE development environment with Lint Rule development
-- Enhancing development environment with GitHub Actions
+- **Code States Educational Content Creation: UI Library Development** (React Library Clone, December 2022)
+- **Couch Coding 6-Week Portfolio Completion Mentor** (July 2022 - November 2022)
+- **Naver Connect Foundation Bootcamp 7th Mentor** (July 2021 - December 2021)
+- **Programmers FE Dev Course 1st Participation** (June 2021 - December 2021)
+- **Naver Engineering Day 2022** (October 2022)
+  - Improving FE development environment with Lint Rule development
+  - Enhancing development environment with GitHub Actions
 
 ---
 
@@ -105,26 +100,37 @@ I can't stand repetitive tasks and automate everything possible, leveraging AI t
 
 ### **<span data-lucide="tool">🛠️</span> Personal Projects**
 
-#### **ChocoPlayer - Game Emulator** (2015, [Video](https://youtu.be/8kt2GUJAd4A?si=I8fCjTyS13BlBvzC), [GitHub](https://github.com/ronparkdev/chocoplayer))
+#### **Mobile Applications**
+
+**ChocoPlayer - Game Emulator** (2015, [Video](https://youtu.be/8kt2GUJAd4A?si=I8fCjTyS13BlBvzC), [GitHub](https://github.com/ronparkdev/chocoplayer))
 - Cross-platform iOS/Android game emulator using Cocos2d-x
 - Achieved 250K+ downloads before strategic removal
 - Demonstrated early expertise in mobile platform optimization
 
-#### **Tiny Time Timer** (2022, [Whale Extension](https://store.whale.naver.com/mini/detail/ggjkckdfbpmdaclhpmjlpifjilpdlhpg), [GitHub](https://github.com/ronparkdev/time-timer))
+#### **Browser Extensions**
+
+**Tiny Time Timer** (2022, [Whale Extension](https://store.whale.naver.com/mini/detail/ggjkckdfbpmdaclhpmjlpifjilpdlhpg), [GitHub](https://github.com/ronparkdev/time-timer))
 - React.js-based progressive web app with extension support
 - Implemented offline-first architecture with service workers
 - Dark theme and sound effects for enhanced UX
 
-#### **Shortcut Click** (2025, [Video](https://youtu.be/BpF5vEGk598?si=uor5RJzOqwKQD_as), [GitHub](https://github.com/ronparkdev/shortcut-click-extension))
+**Shortcut Click** (2025, [Video](https://youtu.be/BpF5vEGk598?si=uor5RJzOqwKQD_as), [GitHub](https://github.com/ronparkdev/shortcut-click-extension))
 - Chrome extension for customizable webpage shortcuts
 - Demonstrates deep understanding of browser APIs and user workflows
+
+#### **Developer Tools & ESLint Plugins**
+
+- **[eslint-plugin-preferred-import](https://github.com/ronparkdev/eslint-plugin-preferred-import)** - ESLint plugin for enforcing preferred import patterns
+- **[eslint-plugin-annotation](https://github.com/ronparkdev/eslint-plugin-annotation)** - ESLint plugin for code annotation management  
+- **[eslint-plugin-sort-annotation](https://github.com/ronparkdev/eslint-plugin-sort-annotation)** - ESLint plugin for sorting annotations
+- **[rollup-plugin-dts-path-alias](https://www.npmjs.com/package/rollup-plugin-dts-path-alias)** - Rollup plugin for TypeScript declaration path aliasing
 
 ---
 
 ## <span data-lucide="graduation-cap">🎓</span> Education
 
 - **Hongik University Seoul Campus**  
-  Bachelor's in Computer Engineering (Mar 2010 - Feb 2017)
+  Bachelor's in Computer Engineering (March 2010 - February 2017)
 
 ---
 
