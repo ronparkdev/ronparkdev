@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Want to know Ron? - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --dark-bg: #0a0e27;
+            --dark-card: #151932;
+            --light-bg: #f8fafc;
+            --light-card: #ffffff;
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --accent: #667eea;
+            --accent-hover: #764ba2;
+            --border-radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-opacity-only: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--light-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        body.dark-mode {
+            --light-bg: var(--dark-bg);
+            --light-card: var(--dark-card);
+            --text-primary: #e2e8f0;
+            --text-secondary: #a0aec0;
+            background: var(--dark-bg);
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 20% 80%, var(--accent) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, var(--accent-hover) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, #f093fb 0%, transparent 50%);
+            animation: bgMove 20s ease infinite;
+        }
+
+        @keyframes bgMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-20px, -20px) rotate(120deg); }
+            66% { transform: translate(20px, -10px) rotate(240deg); }
+        }
+
+        /* Navigation Header */
+        .nav-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .nav-header {
+            background: rgba(21, 25, 50, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(30deg); }
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            background: var(--primary-gradient);
+            border: none;
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 100px auto 50px;
+            padding: 3rem;
+            background: var(--light-card);
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body.dark-mode .container {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary);
+            margin: 2rem 0 1rem;
+            font-weight: 700;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid;
+            border-image: var(--primary-gradient) 1;
+            margin-top: 3rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--accent);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin: 1.2rem 0;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            animation: fadeIn 0.8s ease 0.4s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Links */
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            position: relative;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        a:hover::after {
+            width: 100%;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            color: var(--text-secondary);
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+
+        /* Code Blocks */
+        pre {
+            background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            font-family: 'Fira Code', monospace;
+        }
+
+        pre::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            display: flex;
+            gap: 8px;
+        }
+
+        pre::after {
+            content: '• • •';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            color: #4a5568;
+            letter-spacing: 8px;
+        }
+
+        code {
+            background: rgba(102, 126, 234, 0.1);
+            color: var(--accent);
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        body.dark-mode td {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid;
+            border-image: var(--primary-gradient) 1;
+            padding: 1rem 1.5rem;
+            margin: 2rem 0;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        blockquote::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--accent);
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            opacity: 0.3;
+        }
+
+        /* Images */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 2rem 0;
+            filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.2));
+            transition: var(--transition);
+        }
+
+        img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 5rem;
+            background: var(--light-bg);
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 0;
+        }
+
+        .footer-content {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-left h4 {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .footer-left p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .footer-center {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .footer-center a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: var(--accent);
+            color: white;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .footer-center a:hover {
+            transform: translateY(-3px);
+            background: var(--accent-hover);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .footer-center a::after {
+            display: none;
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .footer-right p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .footer-made-with {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.3rem;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-made-with i {
+            color: #ff6b6b;
+        }
+
+        /* Lucide icon styling */
+        .container-content [data-lucide] {
+            width: 0.8em;
+            height: 0.8em;
+            vertical-align: baseline;
+        }
+
+        /* Hide emojis inside i tags */
+        .container-content i {
+            font-style: normal;
+        }
+        
+        .container-content i::before {
+            content: '';
+        }
+
+        body.dark-mode .footer {
+            background: var(--dark-bg);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .footer-left {
+                align-items: center;
+            }
+
+            .footer-right {
+                text-align: center;
+            }
+
+            .footer-made-with {
+                justify-content: center;
+            }
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-gradient);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0.3s;
+            visibility: hidden;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            z-index: 999;
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0s;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 80px 0 0 0;
+                padding-top: 30px;
+                border-radius: 0;
+            }
+
+            .footer {
+                margin-top: 0;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .nav-header {
+                padding: 1rem;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--light-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 0.5s ease 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(102, 126, 234, 0.2);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-gradient);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-gradient);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-content">
+            <div class="logo">Foundation-First Innovator</div>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i data-lucide="moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="container-content">
+            <div align="center">
+  <img width="256" alt="Image" src="https://github.com/user-attachments/assets/d172805d-5059-441c-99e6-6cd79ae5e088" />   
+</div>
+<h1 id="divaligncentersangminparkdiv"><div align="center">Sang Min Park<div></h1>
+<h3 id="spandatalucidecodespancreativefullstackengineerwithafoundationfirstapproach"><strong><span data-lucide="code">💻</span> Creative Full-Stack Engineer with a Foundation-First Approach</strong></h3>
+<p>I thrive on creative challenges and exploring cutting-edge technologies, but I believe innovation requires rock-solid foundations. I build type-safe, scalable systems using code generators from OpenAPI specs and sometimes create unified FE/BE modules for seamless integration. My monorepo-first approach and full-stack expertise enable me to design BE interfaces optimized for FE needs while crafting FE experiences that maximize BE performance.</p>
+<h3 id="spandatalucidesmartphonespanmobilefirstplatformagnosticdeveloper"><strong><span data-lucide="smartphone">📱</span> Mobile-First, Platform-Agnostic Developer</strong></h3>
+<p>With deep roots in iOS and Android development since 2012, I bring native mobile thinking to every project. I don't just make websites responsive—I create experiences that feel native on every device, understanding the unique constraints and opportunities of mobile platforms.</p>
+<h3 id="spandatalucidebotspanautomationevangelistefficiencyexpert"><strong><span data-lucide="bot">🤖</span> Automation Evangelist & Efficiency Expert</strong></h3>
+<p>I can't stand repetitive tasks and automate everything possible, leveraging AI to work smarter. When I see colleagues wasting time, I find ingenious solutions to their problems. While AI can make code work, I specialize in refactoring it to be efficient, secure, and maintainable—that's where human expertise shines.</p>
+<hr />
+<h2 id="spandatalucidebriefcasespanprofessionalexperience"><span data-lucide="briefcase">💼</span> Professional Experience</h2>
+<h3 id="cofoundercto">Co-Founder &amp; CTO</h3>
+<p><strong>Symptily (Working Title)</strong> | <em>AI-Powered Healthcare Platform</em> | <em>Present</em></p>
+<ul>
+<li>Leading technical architecture and development of AI-driven conversational symptom tracking platform</li>
+<li>Building web/mobile applications for patient community support and healthcare assistance</li>
+<li>Designing scalable, HIPAA-compliant infrastructure for sensitive health data management</li>
+<li>Implementing LLM-based conversational AI for intuitive symptom logging and analysis</li>
+<li>Creating type-safe, unified codebase across web and native mobile platforms</li>
+<li><strong>Target Launch</strong>: September 2025</li>
+</ul>
+<h3 id="frontendengineer">Frontend Engineer</h3>
+<p><strong>Naver Corp, Korea</strong> | <em>November 2024 - Present</em></p>
+<ul>
+<li>SW Engineer of Healthcare Lab</li>
+<li>Implemented type-safe development workflows using OpenAPI specifications and code generation</li>
+<li>Designed mobile-first responsive interfaces with deep understanding of iOS/Android UX patterns</li>
+</ul>
+<h3 id="fullstackdeveloper">Full-Stack Developer</h3>
+<p><strong>Naver Corp, Korea</strong> | <em>May 2020 - November 2024</em></p>
+<ul>
+<li>Led development of responsive user interfaces using TypeScript, React.js, and Next.js</li>
+<li>Architected robust SSR applications on Kubernetes with optimized client-server communication</li>
+<li>Implemented BFF layer with GraphQL, designing APIs that balance FE flexibility with BE performance</li>
+<li>Built unified FE/BE modules ensuring type safety across the entire stack</li>
+</ul>
+<h4 id="keyprojects">Key Projects</h4>
+<ul>
+<li><strong>Smartstore Commerce Platform</strong>: Korea's leading e-commerce platform serving millions of users</li>
+<li><strong>MySmartstore.jp</strong>: Launched Japanese e-commerce platform in 2021 using GraphQL and Next.js architecture. Service was strategically discontinued in June 2024. (<a href="https://www.econotimes.com/Naver-aiming-to-bring-its-e-commerce-biz-to-Japan-1624047">Launch article</a>)</li>
+</ul>
+<h3 id="iosapplicationdeveloper">iOS Application Developer</h3>
+<p><strong>Naver Webtoon Corp, Korea</strong> | <em>December 2016 - April 2020</em></p>
+<ul>
+<li>Developed native iOS applications with focus on offline-first architecture and superior UX</li>
+<li>Created anti-piracy detection tools, resulting in <a href="https://patents.justia.com/patent/20210192671">internal patent application</a></li>
+<li>Applied mobile development best practices that continue to influence my cross-platform work</li>
+</ul>
+<h4 id="keyprojects-1">Key Projects</h4>
+<ul>
+<li><strong>Naver Webtoon iOS App</strong>: Developed AR-based webtoon "마주쳤다" in 2017, implementing gyroscope and magnetometer-based technology to anchor images at specific spatial positions for immersive reading experience.</li>
+<li><strong>Series iOS App</strong>: Premium content platform for web novels and comics with advanced reading features and subscription management</li>
+</ul>
+<hr />
+<h2 id="spandatalucidewrenchspantechnicalphilosophyskills"><span data-lucide="wrench">🔧</span> Technical Philosophy &amp; Skills</h2>
+<h3 id="spandatalucidebuildingspanarchitecturedevelopmentapproach"><strong><span data-lucide="building">🏗️</span> Architecture & Development Approach</strong></h3>
+<ul>
+<li><strong>Monorepo Advocate</strong>: Streamline development with unified codebases for FE/BE collaboration</li>
+<li><strong>Type Safety Champion</strong>: Generate TypeScript clients from OpenAPI specs for bulletproof development</li>
+<li><strong>Cross-Platform Excellence</strong>: Native mobile experience (iOS/Android) applied to web development</li>
+<li><strong>Full-Stack Synergy</strong>: Design BE interfaces for optimal FE consumption while crafting FE that leverages BE strengths</li>
+</ul>
+<h3 id="spandatalucidezapspantechnicalstack"><strong><span data-lucide="zap">⚡</span> Technical Stack</strong></h3>
+<ul>
+<li><strong>Frontend</strong>: TypeScript, React.js, Next.js, Swift (iOS), Kotlin (Android)</li>
+<li><strong>Backend</strong>: Node.js, GraphQL, REST APIs, OpenAPI/Swagger</li>
+<li><strong>DevOps & Tools</strong>: Kubernetes, Docker, GitHub Actions, Monorepo tools (Nx, Turborepo)</li>
+<li><strong>Development Practices</strong>: Code generation, automated testing, CI/CD, type-safe development</li>
+</ul>
+<hr />
+<h2 id="spandatalucidetargetspanexternalactivities"><span data-lucide="target">🎯</span> External Activities</h2>
+<ul>
+<li><strong>Code States Educational Content Creation: UI Library Development</strong> (React Library Clone, December 2022)</li>
+<li><strong>Couch Coding 6-Week Portfolio Completion Mentor</strong> (July 2022 - November 2022)</li>
+<li><strong>Naver Connect Foundation Bootcamp 7th Mentor</strong> (July 2021 - December 2021)</li>
+<li><strong>Programmers FE Dev Course 1st Participation</strong> (June 2021 - December 2021)</li>
+<li><strong>Naver Engineering Day 2022</strong> (October 2022)</li>
+<li>Improving FE development environment with Lint Rule development</li>
+<li>Enhancing development environment with GitHub Actions</li>
+</ul>
+<hr />
+<h2 id="spandataluciderocketspannotableprojects"><span data-lucide="rocket">🚀</span> Notable Projects</h2>
+<h3 id="spandatalucidebriefcasespanfreelancecontractwork"><strong><span data-lucide="briefcase">💼</span> Freelance & Contract Work</strong></h3>
+<h4 id="b2bcosmeticsorderplatformhttpsbringkcomorder"><strong>B2B Cosmetics Order Platform</strong> (https://bring-k.com/order)</h4>
+<ul>
+<li>Designed and implemented full-stack solution with unified type system</li>
+<li>Created mobile-optimized B2B ordering experience</li>
+<li>Built custom admin panel with real-time inventory management</li>
+</ul>
+<h4 id="arbookinteractivewebgame2024videohttpsyoutubejmtw3zffxg0"><strong>AR Book - Interactive Web Game</strong> (2024, <a href="https://youtu.be/jMTW3Zffxg0">Video</a>)</h4>
+<ul>
+<li>Developed performant web game using Pixi.js</li>
+<li>Implemented marker recognition with OpenCV.js</li>
+<li>Optimized for mobile devices with touch-first interactions</li>
+</ul>
+<h3 id="spandatalucidetoolspanpersonalprojects"><strong><span data-lucide="tool">🛠️</span> Personal Projects</strong></h3>
+<h4 id="mobileapplications"><strong>Mobile Applications</strong></h4>
+<p><strong>ChocoPlayer - Game Emulator</strong> (2015, <a href="https://youtu.be/8kt2GUJAd4A?si=I8fCjTyS13BlBvzC">Video</a>, <a href="https://github.com/ronparkdev/chocoplayer">GitHub</a>)</p>
+<ul>
+<li>Cross-platform iOS/Android game emulator using Cocos2d-x</li>
+<li>Achieved 250K+ downloads before strategic removal</li>
+<li>Demonstrated early expertise in mobile platform optimization</li>
+</ul>
+<h4 id="browserextensions"><strong>Browser Extensions</strong></h4>
+<p><strong>Tiny Time Timer</strong> (2022, <a href="https://store.whale.naver.com/mini/detail/ggjkckdfbpmdaclhpmjlpifjilpdlhpg">Whale Extension</a>, <a href="https://github.com/ronparkdev/time-timer">GitHub</a>)</p>
+<ul>
+<li>React.js-based progressive web app with extension support</li>
+<li>Implemented offline-first architecture with service workers</li>
+<li>Dark theme and sound effects for enhanced UX</li>
+</ul>
+<p><strong>Shortcut Click</strong> (2025, <a href="https://youtu.be/BpF5vEGk598?si=uor5RJzOqwKQD_as">Video</a>, <a href="https://github.com/ronparkdev/shortcut-click-extension">GitHub</a>)</p>
+<ul>
+<li>Chrome extension for customizable webpage shortcuts</li>
+<li>Demonstrates deep understanding of browser APIs and user workflows</li>
+</ul>
+<h4 id="developertoolseslintplugins"><strong>Developer Tools & ESLint Plugins</strong></h4>
+<ul>
+<li><strong><a href="https://github.com/ronparkdev/eslint-plugin-preferred-import">eslint-plugin-preferred-import</a></strong> - ESLint plugin for enforcing preferred import patterns</li>
+<li><strong><a href="https://github.com/ronparkdev/eslint-plugin-annotation">eslint-plugin-annotation</a></strong> - ESLint plugin for code annotation management  </li>
+<li><strong><a href="https://github.com/ronparkdev/eslint-plugin-sort-annotation">eslint-plugin-sort-annotation</a></strong> - ESLint plugin for sorting annotations</li>
+<li><strong><a href="https://www.npmjs.com/package/rollup-plugin-dts-path-alias">rollup-plugin-dts-path-alias</a></strong> - Rollup plugin for TypeScript declaration path aliasing</li>
+</ul>
+<hr />
+<h2 id="spandatalucidegraduationcapspaneducation"><span data-lucide="graduation-cap">🎓</span> Education</h2>
+<ul>
+<li><strong>Hongik University Seoul Campus</strong><br />
+Bachelor's in Computer Engineering (March 2010 - February 2017)</li>
+</ul>
+<hr />
+<h2 id="spandatalucidetelescopespanlookingforward"><span data-lucide="telescope">🔭</span> Looking Forward</h2>
+<p>I'm passionate about bridging the gap between frontend and backend, mobile and web, creativity and stability. I believe the future of development lies in unified, type-safe systems that deliver exceptional experiences across all platforms. I want to create services that can positively impact people's lives, with my current biggest interests being AI and healthcare. Whether it's building innovative healthcare solutions or optimizing the next generation of web applications, I'm ready for the challenge.</p>
+<hr />
+<h2 id="spandatalucidephonespancontact"><span data-lucide="phone">📞</span> Contact</h2>
+<ul>
+<li><strong>Email:</strong> <a href="mailto:ronpark.dev@gmail.com">ronpark.dev@gmail.com</a></li>
+<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sang-min-park">linkedin.com/in/sang-min-park</a></li>
+<li><strong>GitHub:</strong> <a href="https://github.com/ronparkdev">github.com/ronparkdev</a></li>
+</ul>
+<hr />
+<p><em>"Stagnant water breeds decay—that's why I never stop learning, building, and pushing boundaries."</em></p>
+        </div>
+        
+        <!-- Scroll to Top Button -->
+        <div class="scroll-top" id="scrollTop">
+            <i data-lucide="arrow-up"></i>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h4>Sang Min Park</h4>
+                <p>Full-Stack Engineer</p>
+                <p>Building the future, one line at a time</p>
+            </div>
+            <div class="footer-center">
+                <a href="https://github.com/ronparkdev" target="_blank" aria-label="GitHub">
+                    <i data-lucide="github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/sang-min-park" target="_blank" aria-label="LinkedIn">
+                    <i data-lucide="linkedin"></i>
+                </a>
+                <a href="mailto:ronpark.dev@gmail.com" aria-label="Email">
+                    <i data-lucide="mail"></i>
+                </a>
+            </div>
+            <div class="footer-right">
+                <p>&copy; 2025 All rights reserved</p>
+                <div class="footer-made-with">
+                    <span>Made with</span>
+                    <i data-lucide="heart"></i>
+                    <span>and</span>
+                    <i data-lucide="coffee"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            icon.setAttribute('data-lucide', 'sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                icon.setAttribute('data-lucide', 'sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.setAttribute('data-lucide', 'moon');
+                localStorage.setItem('theme', 'light');
+            }
+            lucide.createIcons();
+        });
+
+        // Scroll to Top
+        const scrollTop = document.getElementById('scrollTop');
+        const footer = document.getElementById('footer');
+        let footerHeight = 0;
+
+        const updateScrollTopPosition = () => {
+            const bottom = Math.max(window.innerHeight - (body.scrollHeight - window.scrollY) + footerHeight + 30, 30);
+            scrollTop.style.bottom = `${bottom}px`;
+        }
+        
+        new ResizeObserver(() => {
+            footerHeight = footer.clientHeight;
+            updateScrollTopPosition()
+        }).observe(footer);
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('active');
+            } else {
+                scrollTop.classList.remove('active');
+            }
+
+            updateScrollTopPosition()
+        });
+
+        scrollTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const bgAnimation = document.querySelector('.bg-animation');
+            bgAnimation.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+
+        // Remove loading screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.loading').style.display = 'none';
+            }, 1500);
+        });
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
