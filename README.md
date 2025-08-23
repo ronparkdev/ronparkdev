@@ -65,7 +65,7 @@ I can't stand repetitive tasks and automate everything possible, leveraging AI t
 - **Full-Stack Synergy**: Design BE interfaces for optimal FE consumption while crafting FE that leverages BE strengths
 
 ### **<span data-lucide="zap">⚡</span> Technical Stack**
-- **Frontend**: TypeScript, React.js, Next.js, React Native, Swift (iOS), Kotlin (Android)
+- **Frontend**: TypeScript, React.js, Next.js, Swift (iOS), Kotlin (Android)
 - **Backend**: Node.js, GraphQL, REST APIs, OpenAPI/Swagger
 - **DevOps & Tools**: Kubernetes, Docker, GitHub Actions, Monorepo tools (Nx, Turborepo)
 - **Development Practices**: Code generation, automated testing, CI/CD, type-safe development
